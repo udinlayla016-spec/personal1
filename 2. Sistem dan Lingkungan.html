@@ -69,15 +69,8 @@
 
     /* ====== AKHIR GAYA TOMBOL BACK-TO-TOP ====== */
     
-    /* Menyesuaikan iframe agar responsif */
-    .assemblr-iframe {
-      width: 100%;
-      height: 450px; /* Anda bisa sesuaikan tinggi ini */
-      border: none;
-      border-radius: 8px; /* Opsi: agar sedikit melengkung */
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
+    /* ✅ PERBAIKAN: Kode CSS .assemblr-iframe dihapus karena kita akan pakai class 'ratio' Bootstrap */
+
   </style>
   </head>
 
@@ -187,13 +180,14 @@
             <p>Pada ilustrasi ini, sistem yang diamati adalah air yang berada di dalam gelas kimia. Lingkungan mencakup segala sesuatu di luar sistem tersebut, termasuk wadah (gelas kimia), karena fokus pengamatan hanya ditujukan pada air.
             </p>
 
-            <iframe 
-                src='https://viewer.assemblrworld.com/Embed/-7iZevppGzHbstRvqXvZ' 
-                title="3D Model: Sistem dan Lingkungan"
-                class="assemblr-iframe"
-                allow="camera; microphone; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; fullscreen" 
-                allowFullScreen>
-            </iframe>
+            <div class="ratio ratio-16x9 my-3">
+              <iframe 
+                  src='https://viewer.assemblrworld.com/Embed/-7iZevppGzHbstRvqXvZ' 
+                  title="3D Model: Sistem dan Lingkungan"
+                  allow="camera; microphone; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; fullscreen" 
+                  allowFullScreen>
+              </iframe>
+            </div>
 
             <blockquote>
              Jenis-jenis sistem
@@ -202,82 +196,77 @@
             <p>Terdapat tiga jenis sistem. Sistem terbuka dapat bertukar massa dan energi,
 biasanya dalam bentuk panas dengan lingkungannya. sistem tertutup memungkinkan perpindahan energi (panas) tetapi tidak massa. sistem terisolasi tidak memungkinkan perpindahan massa maupun energi.
 </p>
-	    <iframe 
-                src='https://viewer.assemblrworld.com/Embed/-vgiS92FlnmvcqPxrt4W' 
-                title="3D Model: Sistem dan Lingkungan"
-                class="assemblr-iframe"
-                allow="camera; microphone; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; fullscreen" 
-                allowFullScreen>
-            </iframe>
+            <div class="ratio ratio-16x9 my-3">
+              <iframe 
+                  src='https://viewer.assemblrworld.com/Embed/-vgiS92FlnmvcqPxrt4W' 
+                  title="3D Model: Sistem dan Lingkungan"
+                  allow="camera; microphone; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; fullscreen" 
+                  allowFullScreen>
+              </iframe>
+            </div>
 	    
-	    <p>Terdapat tiga jenis sistem. Sistem terbuka dapat bertukar massa dan energi,
-biasanya dalam bentuk panas dengan lingkungannya. sistem tertutup memungkinkan perpindahan energi (panas) tetapi tidak massa. sistem terisolasi tidak memungkinkan perpindahan massa maupun energi,
-
-</p>
-          </div>
+            </div>
 
         </div>
       </div>
     
   </main>
 
-  <footer class="site-footer section-padding">
+<footer class="site-footer section-padding">
     <div class="container">
-      <div class="row">
+        <div class="row">
 
-        <div class="col-lg-3 col-12 mb-4 pb-2">
-          <a class="navbar-brand mb-2" href="index.html">
-            <i class="bi-back"></i>
-            <span>Topik</span>
-          </a>
+            <div class="col-lg-3 col-12 mb-4 pb-2">
+                <a class="navbar-brand mb-2" href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-flask" fs-4 viewBox="0 0 16 16">
+                      <path d="M4.5 0a.5.5 0 0 0 0 1H5v5.36L.503 13.717A1.5 1.5 0 0 0 1.783 16h12.434a1.5 1.5 0 0 0 1.28-2.282L11 6.359V1h.5a.5.5 0 0 0 0-1zM10 2H9a.5.5 0 0 0 0 1h1v1H9a.5.5 0 0 0 0 1h1v1H9a.5.5 0 0 0 0 1h1.22l.61 1H10a.5.5 0 1 0 0 1h1.442l.611 1H11a.5.5 0 1 0 0 1h1.664l.611 1H12a.5.5 0 1 0 0 1h1.886l.758 1.24a.5.5 0 0 1-.427.76H1.783a.5.5 0 0 1-.427-.76l4.57-7.48A.5.5 0 0 0 6 6.5V1h4z"/>
+                    </svg>
+                    <span>Termokimia</span>
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                <h6 class="site-footer-title mb-3">Tautan Cepat</h6>
+                <ul class="site-footer-links">
+                    <li class="site-footer-link-item">
+                        <a href="index.html#section_1" class="site-footer-link">Beranda</a>
+                    </li>
+                    <li class="site-footer-link-item">
+                        <a href="index.html#section_2" class="site-footer-link">Topik</a>
+                    </li>
+                    <li class="site-footer-link-item">
+                        <a href="index.html#section_3" class="site-footer-link">Simulasi</a>
+                    </li>
+                    <li class="site-footer-link-item">
+                        <a href="index.html#section_4" class="site-footer-link">Evaluasi</a>
+                    </li>
+                    <li class="site-footer-link-item">
+                        <a href="index.html#section_5" class="site-footer-link">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                <h6 class="site-footer-title mb-3">Informasi</h6>
+                <p class="text-white d-flex mb-1">
+                    <a href="tel:+62-8190-32896" class="site-footer-link">
+                        +62-8190-32896
+                    </a>
+                </p>
+                <p class="text-white d-flex">
+                    <a href="mailto:muhammadanugrah@upi.edu" class="site-footer-link">
+                        muhammadanugrah@upi.edu
+                    </a>
+                </p>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+                <p class="copyright-text mt-lg-5 mt-4">Copyright © 2025 Termokimia.</p>
+            </div>
+
         </div>
-
-        <div class="col-lg-3 col-md-4 col-6">
-          <h6 class="site-footer-title mb-3">Resources</h6>
-
-          <ul class="site-footer-links">
-            <li class="site-footer-link-item">
-              <a href="index.html" class="site-footer-link">Home</a>
-            </li>
-
-            <li class="site-footer-link-item">
-              <a href="index.html#section_3" class="site-footer-link">How it works</a>
-            </li>
-
-            <li class="site-footer-link-item">
-              <a href="index.html#section_4" class="site-footer-link">FAQs</a>
-            </li>
-
-            <li class="site-footer-link-item">
-              <a href="index.html#section_5" class="site-footer-link">Contact</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
-          <h6 class="site-footer-title mb-3">Information</h6>
-
-          <p class="text-white d-flex mb-1">
-            <a href="tel: +62-8190-32896" class="site-footer-link">
-              +62-8190-32896
-            </a>
-          </p>
-
-          <p class="text-white d-flex">
-            <a href="mailto:muhammadanugrah@upi.edu" class="site-footer-link">
-              muhammadanugrah@upi.edu
-            </a>
-          </p>
-        </div>
-
-        <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
-            <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.
-            <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a> Distribution <a href="https://themewagon.com">ThemeWagon</a></p>
-        </div>
-
-      </div>
     </div>
-  </footer>
+</footer>
 
   <a href="#top" class="smoothscroll" id="scrollTopBtn" title="Kembali ke atas">
     <i class="bi bi-arrow-up-short"></i>
