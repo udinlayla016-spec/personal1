@@ -53,8 +53,24 @@
             transform: translateY(-3px); /* Efek sedikit terangkat */
         }
         /* ====== AKHIR GAYA TOMBOL BACK-TO-TOP ====== */
-    </style>
-</head>
+
+        /* ============================================== */
+        /* ====== AWAL PERBAIKAN MENU MOBILE (BARU) ====== */
+        /* ============================================== */
+        @media (max-width: 991.98px) {
+            /* Ini menargetkan kontainer menu yang bisa dilipat (expanded menu) 
+                hanya pada tampilan mobile (di bawah breakpoint 'lg' Bootstrap).
+            */
+            .navbar .navbar-collapse {
+                background-color: #ffffff; /* Memberi background putih solid */
+                padding: 1rem;             /* Memberi jarak di dalam menu */
+                margin-top: 0.5rem;        /* Memberi sedikit jarak dari tombol 'hamburger' */
+                border-radius: 0.5rem;     /* Membuat sudutnya sedikit membulat */
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Menambah bayangan agar 'mengambang' */
+            }
+        }
+        /* ====== AKHIR PERBAIKAN MENU MOBILE ====== */
+    </style></head>
 
 <body id="top">
 
