@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Topic Detail Page</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/templatemo-topic-listing.css" rel="stylesheet">
+
+  <style>
+    /* Mengatur ukuran font untuk link di navigasi */
+    .navbar-nav .nav-link {
+      font-size: 15px;
+      /* Ganti 15px dengan ukuran yang Anda inginkan */
+    }
+
+    /* ====== AWAL GAYA TOMBOL BACK-TO-TOP ====== */
+    #scrollTopBtn {
+      position: fixed;
+      /* Tetap di layar */
+      bottom: 25px;
+      /* Jarak dari bawah */
+      right: 25px;
+      /* Jarak dari kiri */
+      display: none;
+      /* Sembunyi secara default */
+      z-index: 1000;
+      /* Tampil di atas konten lain */
+
+      /* Tampilan Tombol */
+      background-color: #13547a;
+      /* Warna biru tua dari tema Anda */
+      color: white;
+      border: none;
+      border-radius: 50%;
+      /* Membuatnya bulat */
+      width: 45px;
+      /* Lebar */
+      height: 45px;
+      /* Tinggi */
+
+      /* Tampilan Ikon Panah */
+      font-size: 30px;
+      /* Ukuran ikon */
+      text-align: center;
+      line-height: 45px;
+      /* Menengahkan ikon secara vertikal */
+
+      transition: all 0.3s ease;
+      /* Animasi halus */
+    }
+
+    #scrollTopBtn:hover {
+      background-color: #0f4360;
+      /* Warna sedikit lebih gelap saat disentuh */
+      color: white;
+      transform: translateY(-3px);
+      /* Efek sedikit terangkat */
+    }
+
+    /* ====== AKHIR GAYA TOMBOL BACK-TO-TOP ====== */
+    
+    /* Menyesuaikan iframe agar responsif */
+    .assemblr-iframe {
+      width: 100%;
+      height: 450px; /* Anda bisa sesuaikan tinggi ini */
+      border: none;
+      border-radius: 8px; /* Opsi: agar sedikit melengkung */
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+  </head>
+
+<body id="top">
+
+  <main>
+
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-flask" fs-4 viewBox="0 0 16 16">
+            <path d="M4.5 0a.5.5 0 0 0 0 1H5v5.36L.503 13.717A1.5 1.5 0 0 0 1.783 16h12.434a1.5 1.5 0 0 0 1.28-2.282L11 6.359V1h.5a.5.5 0 0 0 0-1zM10 2H9a.5.5 0 0 0 0 1h1v1H9a.5.5 0 0 0 0 1h1v1H9a.5.5 0 0 0 0 1h1.22l.61 1H10a.5.5 0 1 0 0 1h1.442l.611 1H11a.5.5 0 1 0 0 1h1.664l.611 1H12a.5.5 0 1 0 0 1h1.886l.758 1.24a.5.5 0 0 1-.427.76H1.783a.5.5 0 0 1-.427-.76l4.57-7.48A.5.5 0 0 0 6 6.5V1h4z" />
+          </svg>
+          <span>Termokimia</span>
+        </a>
+
+        <div class="d-lg-none ms-auto me-4">
+          <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-lg-5 me-lg-auto">
+            <li class="nav-item align-self-baseline">
+              <a class="nav-link click-scroll" href="index.html#section_1">Beranda</a>
+            </li>
+
+            <li class="nav-item align-self-baseline">
+              <a class="nav-link click-scroll" href="index.html#section_2" style="white-space: nowrap;">Topik</a>
+            </li>
+
+            <li class="nav-item align-self-baseline">
+              <a class="nav-link click-scroll" href="index.html#section_3" style="white-space: nowrap;">Simulasi</a>
+            </li>
+
+            <li class="nav-item align-self-baseline">
+              <a class="nav-link click-scroll" href="index.html#section_4">Evaluasi</a>
+            </li>
+
+            <li class="nav-item align-self-baseline">
+              <a class="nav-link click-scroll" href="index.html#section_5">Contact</a>
+            </li>
+
+            <li class="nav-item dropdown align-self-baseline">
+              <a class="nav-link dropdown-toggle click-scroll" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Materi</a>
+
+              <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                <li><a class="dropdown-item" href="1. energi.html">Energi</a></li>
+                <li><a class="dropdown-item" href="2. Sistem dan Lingkungan.html">Sistem dan Lingkungan</a></li>
+                <li><a class="dropdown-item" href="3. Endo dan Ekso.html">Endoterm dan ekksoterm</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="d-none d-lg-block">
+            <a href="#top">
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="site-header d-flex flex-column justify-content-center align-items-center">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+
+          <div class="col-lg-5 col-12 mb-5">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Homepage</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Lingkungan dan Sistem</li>
+              </ol>
+            </nav>
+
+            <h2 class="text-white">Lingkungan dan <br> Sistem</h2>
+
+            <div class="d-flex align-items-center mt-5">
+              <a href="#topics-detail" class="btn custom-btn custom-border-btn smoothscroll me-4">Lanjut Baca</a>
+              <a href="#top" class="custom-icon bi-bookmark smoothscroll"></a>
+            </div>
+          </div>
+
+          <div class="col-lg-5 col-12">
+            <div class="topics-detail-block bg-white shadow-lg">
+              <img src="images/7. Jenis sistem.png" class="topics-detail-block-image img-fluid">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+
+    <section class="topics-detail-section section-padding" id="topics-detail">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-8 col-12 m-auto">
+            <h3 class="mb-4">Sistem dan Lingkungan </h3>
+
+            <p>Untuk menganalisis perubahan energi yang terkait dengan reaksi kimia, pertama-tama kita harus mendefinisikan sistem, atau bagian spesifik dari alam semesta yang kita amati. Lingkungan adalah sisa alam semesta di luar sistem.
+            </p>
+            <p>Lingkungan adalah tempat pengamatan dilakukan terhadap energi yang ditransfer ke dalam atau keluar dari sistem. Sistem dan sekitarnya bersama-sama membentuk alam semesta. </p>
+            <p>Pada ilustrasi ini, sistem yang diamati adalah air yang berada di dalam gelas kimia. Lingkungan mencakup segala sesuatu di luar sistem tersebut, termasuk wadah (gelas kimia), karena fokus pengamatan hanya ditujukan pada air.
+            </p>
+
+            <iframe 
+                src='https://viewer.assemblrworld.com/Embed/-7iZevppGzHbstRvqXvZ' 
+                title="3D Model: Sistem dan Lingkungan"
+                class="assemblr-iframe"
+                allow="camera; microphone; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; fullscreen" 
+                allowFullScreen>
+            </iframe>
+
+            <blockquote>
+             Jenis-jenis sistem
+            </blockquote>
+
+            <p>Terdapat tiga jenis sistem. Sistem terbuka dapat bertukar massa dan energi,
+biasanya dalam bentuk panas dengan lingkungannya. sistem tertutup memungkinkan perpindahan energi (panas) tetapi tidak massa. sistem terisolasi tidak memungkinkan perpindahan massa maupun energi.
+</p>
+	    <iframe 
+                src='https://viewer.assemblrworld.com/Embed/-vgiS92FlnmvcqPxrt4W' 
+                title="3D Model: Sistem dan Lingkungan"
+                class="assemblr-iframe"
+                allow="camera; microphone; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; fullscreen" 
+                allowFullScreen>
+            </iframe>
+	    
+	    <p>Terdapat tiga jenis sistem. Sistem terbuka dapat bertukar massa dan energi,
+biasanya dalam bentuk panas dengan lingkungannya. sistem tertutup memungkinkan perpindahan energi (panas) tetapi tidak massa. sistem terisolasi tidak memungkinkan perpindahan massa maupun energi,
+
+</p>
+          </div>
+
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="site-footer section-padding">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3 col-12 mb-4 pb-2">
+          <a class="navbar-brand mb-2" href="index.html">
+            <i class="bi-back"></i>
+            <span>Topik</span>
+          </a>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-6">
+          <h6 class="site-footer-title mb-3">Resources</h6>
+
+          <ul class="site-footer-links">
+            <li class="site-footer-link-item">
+              <a href="index.html" class="site-footer-link">Home</a>
+            </li>
+
+            <li class="site-footer-link-item">
+              <a href="index.html#section_3" class="site-footer-link">How it works</a>
+            </li>
+
+            <li class="site-footer-link-item">
+              <a href="index.html#section_4" class="site-footer-link">FAQs</a>
+            </li>
+
+            <li class="site-footer-link-item">
+              <a href="index.html#section_5" class="site-footer-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+          <h6 class="site-footer-title mb-3">Information</h6>
+
+          <p class="text-white d-flex mb-1">
+            <a href="tel: +62-8190-32896" class="site-footer-link">
+              +62-8190-32896
+            </a>
+          </p>
+
+          <p class="text-white d-flex">
+            <a href="mailto:muhammadanugrah@upi.edu" class="site-footer-link">
+              muhammadanugrah@upi.edu
+            </a>
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+            <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.
+            <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a> Distribution <a href="https://themewagon.com">ThemeWagon</a></p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="smoothscroll" id="scrollTopBtn" title="Kembali ke atas">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/custom.js"></script>
+  <script>
+    $(document).ready(function() {
+
+      // Tampilkan atau sembunyikan tombol saat user scroll
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 200) {
+          // Tampil jika user scroll lebih dari 200px
+          $('#scrollTopBtn').fadeIn();
+        } else {
+          // Sembunyi jika user di atas 200px
+          $('#scrollTopBtn').fadeOut();
+        }
+      });
+
+      // Fungsi smooth scroll sudah di-handle oleh class 'smoothscroll'
+      // jadi kita tidak perlu menambahkan script untuk klik di sini.
+
+    });
+  </script>
+
+</body>
+
+</html>

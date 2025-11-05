@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-t">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Topic Detail Page</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+                        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/templatemo-topic-listing.css" rel="stylesheet">
+
+	<style>
+        /* Mengatur ukuran font untuk link di navigasi */
+        .navbar-nav .nav-link {
+            font-size: 15px; /* Ganti 15px dengan ukuran yang Anda inginkan */
+        }
+
+        /* ====== AWAL GAYA TOMBOL BACK-TO-TOP ====== */
+        #scrollTopBtn {
+            position: fixed;     /* Tetap di layar */
+            bottom: 25px;        /* Jarak dari bawah */
+            right: 25px;         /* Jarak dari kiri */
+            display: none;       /* Sembunyi secara default */
+            z-index: 1000;       /* Tampil di atas konten lain */
+            
+            /* Tampilan Tombol */
+            background-color: #13547a; /* Warna biru tua dari tema Anda */
+            color: white;
+            border: none;
+            border-radius: 50%;  /* Membuatnya bulat */
+            width: 45px;         /* Lebar */
+            height: 45px;        /* Tinggi */
+
+            /* Tampilan Ikon Panah */
+            font-size: 30px;     /* Ukuran ikon */
+            text-align: center;
+            line-height: 45px;   /* Menengahkan ikon secara vertikal */
+            
+            transition: all 0.3s ease; /* Animasi halus */
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #0f4360; /* Warna sedikit lebih gelap saat disentuh */
+            color: white;
+            transform: translateY(-3px); /* Efek sedikit terangkat */
+        }
+        /* ====== AKHIR GAYA TOMBOL BACK-TO-TOP ====== */
+
+        /* ====== AWAL GAYA SIMULATOR (DARI INDEX.HTML) ====== */
+        .simulator-container {
+            width: 90%;
+            max-width: 800px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            border: 1px solid #e0e0e0;
+            margin-left: auto; /* Untuk menengahkan container */
+            margin-right: auto; /* Untuk menengahkan container */
+            margin-top: 25px; /* Memberi jarak dari blockquote di atas */
+        }
+
+        .simulator-container h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        /* Dibuat lebih spesifik agar tidak bentrok dengan Bootstrap */
+        .simulator-container .btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .simulator-container #btn-exo {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .simulator-container #btn-exo:hover {
+            background-color: #c0392b;
+        }
+
+        .simulator-container #btn-endo {
+            background-color: #3498db;
+            color: white;
+        }
+        .simulator-container #btn-endo:hover {
+            background-color: #2980b9;
+        }
+
+        .simulation-area {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            min-height: 300px; /* Memberi ruang lebih untuk SVG */
+        }
+
+        /* Visualisasi Gelas Kimia & Termometer */
+        .visualization {
+            position: relative;
+            width: 150px;
+            height: 200px;
+        }
+        .beaker {
+            width: 120px;
+            height: 160px;
+            border: 5px solid #7f8c8d;
+            border-top: none;
+            border-radius: 0 0 15px 15px;
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+        }
+        .liquid {
+            width: 100%;
+            height: 100px;
+            background-color: #bdc3c7;
+            position: absolute;
+            bottom: 0;
+            border-radius: 0 0 10px 10px;
+            transition: background-color 1s ease, box-shadow 1s ease;
+        }
+        .liquid.exo-active {
+            animation: heat-glow 1s infinite alternate;
+        }
+        .liquid.endo-active {
+            animation: cold-glow 1s infinite alternate;
+        }
+        @keyframes heat-glow {
+            from { background-color: #e74c3c; box-shadow: 0 0 15px #e74c3c; }
+            to { background-color: #ff6b5a; box-shadow: 0 0 25px #ff6b5a; }
+        }
+        @keyframes cold-glow {
+            from { background-color: #3498db; box-shadow: 0 0 15px #3498db; }
+            to { background-color: #5dade2; box-shadow: 0 0 25px #5dade2; }
+        }
+        .thermometer {
+            width: 20px;
+            height: 180px;
+            background: #ecf0f1;
+            border: 3px solid #95a5a6;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 10px;
+        }
+        .mercury {
+            width: 10px;
+            height: 50%;
+            background: #e74c3c;
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px 5px 0 0;
+            transition: height 1s ease, background-color 1s ease;
+        }
+        .temp-reading {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            font-size: 18px;
+            background: white;
+            padding: 2px 5px;
+            border-radius: 5px;
+        }
+
+        /* Area Diagram SVG */
+        .svg-diagram {
+            width: 100%;
+            max-width: 350px;
+            height: 250px;
+        }
+
+        #reaction-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible; /* Agar label tidak terpotong */
+        }
+
+        /* Styling untuk elemen SVG */
+        #reaction-path {
+            stroke-width: 4px;
+            fill: none;
+            transition: d 1s ease-in-out;
+        }
+
+        /* Styling untuk garis dan teks yang akan bergerak */
+        .svg-level, .svg-arrow, .svg-text {
+            transition: all 1s ease-in-out;
+        }
+        
+        /* Atur visibilitas garis tambahan */
+        #ea-product-line {
+            visibility: hidden; /* Sembunyikan secara default */
+            transition: all 1s ease-in-out;
+        }
+
+        /* Info Text */
+        #info-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: 500;
+            min-height: 2em;
+        }
+        /* ====== AKHIR GAYA SIMULATOR ====== */
+
+    </style>
+</head>
+    
+    <body id="top">
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-flask" fs-4 viewBox="0 0 16 16">
+<path d="M4.5 0a.5.5 0 0 0 0 1H5v5.36L.503 13.717A1.5 1.5 0 0 0 1.783 16h12.434a1.5 1.5 0 0 0 1.28-2.282L11 6.359V1h.5a.5.5 0 0 0 0-1zM10 2H9a.5.5 0 0 0 0 1h1v1H9a.5.5 0 0 0 0 1h1v1H9a.5.5 0 0 0 0 1h1.22l.61 1H10a.5.5 0 1 0 0 1h1.442l.611 1H11a.5.5 0 1 0 0 1h1.664l.611 1H12a.5.5 0 1 0 0 1h1.886l.758 1.24a.5.5 0 0 1-.427.76H1.783a.5.5 0 0 1-.427-.76l4.57-7.48A.5.5 0 0 0 6 6.5V1h4z"/>
+</svg>
+            <span>Termokimia</span>
+        </a>
+
+        <div class="d-lg-none ms-auto me-4">
+            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                <li class="nav-item align-self-baseline">
+                    <a class="nav-link click-scroll" href="index.html#section_1">Beranda</a>
+                </li>
+
+                <li class="nav-item align-self-baseline">
+                    <a class="nav-link click-scroll" href="index.html#section_2" style="white-space: nowrap;">Topik</a>
+                </li>
+
+                <li class="nav-item align-self-baseline">
+                    <a class="nav-link click-scroll" href="index.html#section_3" style="white-space: nowrap;">Simulasi</a>
+                </li>
+
+                <li class="nav-item align-self-baseline">
+                    <a class="nav-link click-scroll" href="index.html#section_4">Evaluasi</a>
+                </li>
+
+                <li class="nav-item align-self-baseline">
+                    <a class="nav-link click-scroll" href="index.html#section_5">Contact</a>
+                </li>
+
+                <li class="nav-item dropdown align-self-baseline">
+                    <a class="nav-link dropdown-toggle click-scroll" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Materi</a>
+
+                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                          			  <li><a class="dropdown-item" href="1. energi.html">Energi</a></li>
+
+						  <li><a class="dropdown-item" href="2. Sistem dan Lingkungan.html">Sistem dan Lingkungan</a></li>
+
+						  <li><a class="dropdown-item" href="3. Endo dan Ekso.html">Endoterm dan ekksoterm</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+       <div class="d-none d-lg-block">
+<a href="#top"> 
+    
+</a> </div>
+            </div>
+        </div>
+    </div>
+</nav>
+            
+
+            <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+
+                        <div class="col-lg-5 col-12 mb-5">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Homepage</a></li>
+
+                                    <li class="breadcrumb-item active" aria-current="page">Eksoterm dan Endoterm</li>
+                                </ol>
+                            </nav>
+
+                            <h2 class="text-white">Eksoterm <br> dan Endoterm</h2>
+
+                            <div class="d-flex align-items-center mt-5">
+                                <a href="#topics-detail" class="btn custom-btn custom-border-btn smoothscroll me-4">Lanjut Baca</a>
+
+                                <a href="#top" class="custom-icon bi-bookmark smoothscroll"></a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 col-12">
+                            <div class="topics-detail-block bg-white shadow-lg">
+                                <img src="images/9. Ekskoterm dan endo term.jpeg" class="topics-detail-block-image img-fluid">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+
+            <section class="topics-detail-section section-padding" id="topics-detail">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 m-auto">
+                            <h3 class="mb-4">Eksoterm dan Endoterm</h3>
+
+                            <p>Proses Endotermik
+Proses endotermik adalah proses di mana sistem menyerap energi (panas) dari lingkungannya. Sesuai dengan namanya (endo- berarti "ke dalam"), panas "masuk" ke dalam sistem. Dalam persamaan reaksi, panas dapat dianggap sebagai reaktan.
+
+Contoh: Pelelehan es menjadi air, di mana es (sistem) menyerap panas dari lingkungan
+</p>
+			    <p>heat + H<sub>2</sub>O(s) &rarr; H<sub>2</sub>O(l)</p>
+
+                            <p>Proses eksotermik adalah proses di mana sistem melepaskan energi (kehilangan kalor) ke lingkungannya. Sesuai dengan namanya (ekso- berarti "keluar dari"), panas "keluar" dari sistem. Dalam persamaan reaksi, panas dapat dianggap sebagai produk.
+
+Contoh: Pembakaran gas metana, yang melepaskan panas dan cahaya ke lingkungan.
+</p>
+			    <p>CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) &rarr; CO<sub>2</sub>(g) + 2H<sub>2</sub>O(g) + heat</p>
+                            <blockquote>
+                                Grafik Energi dalam Peristiwa Eksoterm dan Endoterm
+                            </blockquote>
+
+			    <p>Karena proses endotermik menyerap energi dari lingkungan, energi akhir (produk) akan lebih tinggi daripada energi awal (reaktan). Hal ini terlihat jelas pada diagram energinya, di mana level energi reaktan berada di posisi lebih rendah daripada level energi produk.
+</p>
+			    <p>Sedangkan pada proses eksotermik melepaskan energi ke lingkungan, energi akhir (produk) akan lebih rendah daripada energi awal (reaktan). Hal ini terlihat jelas pada diagram energinya, di mana level energi reaktan berada di posisi lebih tinggi daripada level energi produk.
+</p>
+                            <div class="simulator-container">
+                                <h1>Simulator Termokimia</h1>
+                                <div class="controls">
+                                    <button class="btn" id="btn-exo">Mulai Reaksi Eksoterm 🔥</button>
+                                    <button class="btn" id="btn-endo">Mulai Reaksi Endoterm ❄️</button>
+                                </div>
+
+                                <div class="simulation-area">
+                                    <div class="visualization">
+                                        <div class="beaker">
+                                            <div class="liquid" id="liquid"></div>
+                                        </div>
+                                        <div class="thermometer">
+                                            <div class="mercury" id="mercury"></div>
+                                            <div class="temp-reading" id="temp-reading">25°C</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="svg-diagram">
+                                        <svg id="reaction-svg" viewBox="0 0 300 250">
+                                            <defs>
+                                                <marker id="arrowhead" markerWidth="7" markerHeight="5" 
+                                                refX="0" refY="2.5" orient="auto" fill="#333">
+                                                    <polygon points="0 0, 7 2.5, 0 5" />
+                                                </marker>
+                                            </defs>
+
+                                            <line x1="20" y1="10" x2="20" y2="230" stroke="#333" stroke-width="2" />
+                                            <line x1="20" y1="230" x2="280" y2="230" stroke="#333" stroke-width="2" />
+                                            <text x="-120" y="15" transform="rotate(-90)" style="font-size: 14px; font-weight: bold; fill: #333;">Energi</text>
+                                            <text x="120" y="248" style="font-size: 14px; font-weight: bold; fill: #333;"></text>
+                                            
+                                            <path id="reaction-path" d="M 30,125 C 60,125 80,125 120,125 C 160,125 180,125 270,125" stroke="red" />
+
+                                            <line id="reactant-line" class="svg-level" x1="30" y1="125" x2="80" y2="125" stroke="#555" stroke-width="2" stroke-dasharray="4" />
+                                            <text id="reactant-text" class="svg-text" x="35" y="118" style="font-size: 12px; font-weight: bold;">Reaktan</text>
+                                            
+                                            <line id="product-line" class="svg-level" x1="220" y1="125" x2="270" y2="125" stroke="#555" stroke-width="2" stroke-dasharray="4" />
+                                            <text id="product-text" class="svg-text" x="225" y="118" style="font-size: 12px; font-weight: bold;">Produk</text>
+
+                                            <line id="ea-line-top" class="svg-level" x1="120" y1="125" x2="140" y2="125" stroke="#555" stroke-width="1.5" stroke-dasharray="3" />
+                                            <line id="ea-arrow" class="svg-arrow" x1="130" y1="125" x2="130" y2="125" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+                                            <text id="ea-text" class="svg-text" x="135" y="125" style="font-size: 12px; font-weight: bold; fill: #333;">Eₐ</text>
+                                            
+                                            <line id="dh-arrow" class="svg-arrow" x1="200" y1="125" x2="200" y2="125" stroke="#333" stroke-width="2" />
+                                            <text id="dh-text" class="svg-text" x="205" y="125" style="font-size: 12px; font-weight: bold;">Energi</text>
+                                            
+                                            <line id="ea-product-line" class="svg-arrow" x1="160" y1="125" x2="160" y2="125" stroke="#777" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrowhead)" />
+
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <p id="info-text">Pilih salah satu reaksi untuk memulai simulasi.</p>
+                            </div>
+                            </div>
+
+                    </div>
+                </div>
+            
+        </main>
+		
+       <footer class="site-footer section-padding">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-12 mb-4 pb-2">
+                        <a class="navbar-brand mb-2" href="index.html">
+                            <i class="bi-back"></i>
+                            <span>Topik</span>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <h6 class="site-footer-title mb-3">Resources</h6>
+
+                        <ul class="site-footer-links">
+                            <li class="site-footer-link-item">
+                                <a href="index.html" class="site-footer-link">Home</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="index.html#section_3" class="site-footer-link">How it works</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="index.html#section_4" class="site-footer-link">FAQs</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="index.html#section_5" class="site-footer-link">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                        <h6 class="site-footer-title mb-3">Information</h6>
+
+                        <p class="text-white d-flex mb-1">
+                            <a href="tel: +62-8190-32896" class="site-footer-link">
+                                +62-8190-32896
+                            </a>
+                        </p>
+
+                        <p class="text-white d-flex">
+                            <a href="mailto:muhammadanugrah@upi.edu" class="site-footer-link">
+                                muhammadanugrah@upi.edu
+                            </a>
+                        </p>
+                    </div>
+
+
+                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.
+                        <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a> Distribution <a href="https://themewagon.com">ThemeWagon</a></p>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+        <a href="#top" class="smoothscroll" id="scrollTopBtn" title="Kembali ke atas">
+            <i class="bi bi-arrow-up-short"></i>
+        </a>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/custom.js"></script>
+	<script>
+        $(document).ready(function(){
+            
+            // Tampilkan atau sembunyikan tombol saat user scroll
+            $(window).scroll(function(){
+                if ($(this).scrollTop() > 200) { 
+                    // Tampil jika user scroll lebih dari 200px
+                    $('#scrollTopBtn').fadeIn();
+                } else {
+                    // Sembunyi jika user di atas 200px
+                    $('#scrollTopBtn').fadeOut();
+                }
+            });
+
+            // Fungsi smooth scroll sudah di-handle oleh class 'smoothscroll'
+            // jadi kita tidak perlu menambahkan script untuk klik di sini.
+
+        });
+        </script>
+    
+    <script>
+        // JavaScript untuk Logika
+        const btnExo = document.getElementById('btn-exo');
+        const btnEndo = document.getElementById('btn-endo');
+        
+        // Elemen Termometer
+        const liquid = document.getElementById('liquid');
+        const mercury = document.getElementById('mercury');
+        const tempReading = document.getElementById('temp-reading');
+        
+        // Elemen Diagram SVG
+        const reactionPath = document.getElementById('reaction-path');
+        const reactantLine = document.getElementById('reactant-line');
+        const reactantText = document.getElementById('reactant-text');
+        const productLine = document.getElementById('product-line');
+        const productText = document.getElementById('product-text');
+        const eaLineTop = document.getElementById('ea-line-top');
+        const eaArrow = document.getElementById('ea-arrow');
+        const eaText = document.getElementById('ea-text');
+        const dhArrow = document.getElementById('dh-arrow');
+        const dhText = document.getElementById('dh-text');
+        const eaProductLine = document.getElementById('ea-product-line'); // <-- BARU
+        
+        const infoText = document.getElementById('info-text');
+
+        // Koordinat Y (0 adalah Puncak SVG, 250 adalah Dasar)
+        const yPuncak = 40;  // Puncak Energi Aktivasi
+        const yExoReactan = 80;
+        const yExoProduk = 180;
+        const yEndoReactan = 180;
+        const yEndoProduk = 80;
+
+
+        btnExo.addEventListener('click', startExoterm);
+        btnEndo.addEventListener('click', startEndoterm);
+
+        function startExoterm() {
+            // 1. Visualisasi Termometer
+            liquid.classList.remove('endo-active');
+            liquid.classList.add('exo-active');
+            mercury.style.height = '80%'; // Suhu naik
+            mercury.style.backgroundColor = '#e74c3c';
+            tempReading.textContent = '45°C';
+
+            // 2. Visualisasi Diagram Energi (SVG)
+            const pathData = `M 30,${yExoReactan} C 60,${yExoReactan} 80,${yPuncak} 120,${yPuncak} C 160,${yPuncak} 180,${yExoProduk} 270,${yExoProduk}`;
+            reactionPath.setAttribute('d', pathData);
+            reactionPath.style.stroke = '#e74c3c';
+
+            // Set Level Reaktan
+            reactantLine.setAttribute('y1', yExoReactan);
+            reactantLine.setAttribute('y2', yExoReactan);
+            reactantText.setAttribute('y', yExoReactan - 7);
+
+            // Set Level Produk
+            productLine.setAttribute('y1', yExoProduk);
+            productLine.setAttribute('y2', yExoProduk);
+            productText.setAttribute('y', yExoProduk - 7);
+
+            // Set Panah Ea (PERBAIKAN)
+            eaLineTop.setAttribute('y1', yPuncak);
+            eaLineTop.setAttribute('y2', yPuncak);
+            eaArrow.setAttribute('y1', yExoReactan); // Dari reaktan
+            eaArrow.setAttribute('y2', yPuncak); // Ke puncak
+            eaArrow.setAttribute('marker-start', null);
+            eaArrow.setAttribute('marker-end', 'url(#arrowhead)'); // Panah ke atas
+            eaText.setAttribute('y', (yPuncak + yExoReactan) / 2);
+
+            // Set Panah Delta H
+            dhArrow.setAttribute('y1', yExoReactan); // Dari reaktan
+            dhArrow.setAttribute('y2', yExoProduk); // Ke produk
+            dhArrow.setAttribute('marker-start', null);
+            dhArrow.setAttribute('marker-end', 'url(#arrowhead)'); // Panah ke bawah
+            dhArrow.style.stroke = '#c0392b';
+            dhText.setAttribute('y', (yExoReactan + yExoProduk) / 2);
+            dhText.textContent = 'Energi';
+            dhText.style.fill = '#c0392b';
+
+            // 3. Info Text
+            infoText.textContent = 'Reaksi EKSOTERM: Energi dilepaskan. Suhu sistem naik.';
+            infoText.style.color = '#c0392b';
+            
+            // 4. Sembunyikan garis ea-produk
+            eaProductLine.style.visibility = 'hidden';
+        }
+
+        function startEndoterm() {
+            // 1. Visualisasi Termometer
+            liquid.classList.remove('exo-active');
+            liquid.classList.add('endo-active');
+            mercury.style.height = '20%'; // Suhu turun
+            mercury.style.backgroundColor = '#2980b9';
+            tempReading.textContent = '10°C';
+
+            // 2. Visualisasi Diagram Energi (SVG)
+            const pathData = `M 30,${yEndoReactan} C 60,${yEndoReactan} 80,${yPuncak} 120,${yPuncak} C 160,${yPuncak} 180,${yEndoProduk} 270,${yEndoProduk}`;
+            reactionPath.setAttribute('d', pathData);
+            reactionPath.style.stroke = '#3498db';
+
+            // Set Level Reaktan
+            reactantLine.setAttribute('y1', yEndoReactan);
+            reactantLine.setAttribute('y2', yEndoReactan);
+            reactantText.setAttribute('y', yEndoReactan - 7);
+
+            // Set Level Produk
+            productLine.setAttribute('y1', yEndoProduk);
+            productLine.setAttribute('y2', yEndoProduk);
+            productText.setAttribute('y', yEndoProduk - 7);
+
+            // Set Panah Ea (PERBAIKAN)
+            eaLineTop.setAttribute('y1', yPuncak);
+            eaLineTop.setAttribute('y2', yPuncak);
+            eaArrow.setAttribute('y1', yEndoReactan); // Dari reaktan
+            eaArrow.setAttribute('y2', yPuncak); // Ke puncak
+            eaArrow.setAttribute('marker-start', null);
+            eaArrow.setAttribute('marker-end', 'url(#arrowhead)'); // Panah ke atas
+            eaText.setAttribute('y', (yPuncak + yEndoReactan) / 2);
+
+            // Set Panah Delta H
+            dhArrow.setAttribute('y1', yEndoReactan); // Dari reaktan
+            dhArrow.setAttribute('y2', yEndoProduk); // Ke produk
+            dhArrow.setAttribute('marker-start', null);
+            dhArrow.setAttribute('marker-end', 'url(#arrowhead)'); // Panah ke atas
+            dhArrow.style.stroke = '#2980b9';
+            dhText.setAttribute('y', (yEndoReactan + yEndoProduk) / 2);
+            dhText.textContent = 'Energi';
+            dhText.style.fill = '#2980b9';
+
+            // 3. Info Text
+            infoText.textContent = 'Reaksi ENDOTERM: Energi diserap . Suhu sistem turun.';
+            infoText.style.color = '#2980b9';
+            
+            // 4. Tampilkan garis dari Puncak ke Produk
+            eaProductLine.setAttribute('y1', yPuncak); // Dari Puncak
+            eaProductLine.setAttribute('y2', yEndoProduk); // Ke level Produk
+            eaProductLine.setAttribute('marker-start', null);
+            eaProductLine.setAttribute('marker-end', 'url(#arrowhead)'); // Panah ke bawah
+            eaProductLine.style.visibility = 'visible'; // Tampilkan garis
+        }
+    </script>
+    </body>
+</html>

@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Topic Detail Page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-topic-listing.css" rel="stylesheet">
+
+    <style>
+        /* Mengatur ukuran font untuk link di navigasi */
+        .navbar-nav .nav-link {
+            font-size: 15px; /* Ganti 15px dengan ukuran yang Anda inginkan */
+        }
+
+        /* ====== AWAL GAYA TOMBOL BACK-TO-TOP ====== */
+        #scrollTopBtn {
+            position: fixed;     /* Tetap di layar */
+            bottom: 25px;        /* Jarak dari bawah */
+            right: 25px;         /* Jarak dari kiri */
+            display: none;       /* Sembunyi secara default */
+            z-index: 1000;       /* Tampil di atas konten lain */
+            
+            /* Tampilan Tombol */
+            background-color: #13547a; /* Warna biru tua dari tema Anda */
+            color: white;
+            border: none;
+            border-radius: 50%; /* Membuatnya bulat */
+            width: 45px;         /* Lebar */
+            height: 45px;        /* Tinggi */
+
+            /* Tampilan Ikon Panah */
+            font-size: 30px;     /* Ukuran ikon */
+            text-align: center;
+            line-height: 45px;   /* Menengahkan ikon secara vertikal */
+            
+            transition: all 0.3s ease; /* Animasi halus */
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #0f4360; /* Warna sedikit lebih gelap saat disentuh */
+            color: white;
+            transform: translateY(-3px); /* Efek sedikit terangkat */
+        }
+        /* ====== AKHIR GAYA TOMBOL BACK-TO-TOP ====== */
+    </style>
+</head>
+
+<body id="top">
+
+    <main>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-flask" fs-4 viewBox="0 0 16 16">
+                        <path d="M4.5 0a.5.5 0 0 0 0 1H5v5.36L.503 13.717A1.5 1.5 0 0 0 1.783 16h12.434a1.5 1.5 0 0 0 1.28-2.282L11 6.359V1h.5a.5.5 0 0 0 0-1zM10 2H9a.5.5 0 0 0 0 1h1v1H9a.5.5 0 0 0 0 1h1v1H9a.5.5 0 0 0 0 1h1.22l.61 1H10a.5.5 0 1 0 0 1h1.442l.611 1H11a.5.5 0 1 0 0 1h1.664l.611 1H12a.5.5 0 1 0 0 1h1.886l.758 1.24a.5.5 0 0 1-.427.76H1.783a.5.5 0 0 1-.427-.76l4.57-7.48A.5.5 0 0 0 6 6.5V1h4z" />
+                    </svg>
+                    <span>Termokimia</span>
+                </a>
+
+                <div class="d-lg-none ms-auto me-4">
+                    <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                        <li class="nav-item align-self-baseline">
+                            <a class="nav-link click-scroll" href="index.html#section_1">Beranda</a>
+                        </li>
+
+                        <li class="nav-item align-self-baseline">
+                            <a class="nav-link click-scroll" href="index.html#section_2" style="white-space: nowrap;">Topik</a>
+                        </li>
+
+                        <li class="nav-item align-self-baseline">
+                            <a class="nav-link click-scroll" href="index.html#section_3" style="white-space: nowrap;">Simulasi</a>
+                        </li>
+
+                        <li class="nav-item align-self-baseline">
+                            <a class="nav-link click-scroll" href="index.html#section_4">Evaluasi</a>
+                        </li>
+
+                        <li class="nav-item align-self-baseline">
+                            <a class="nav-link click-scroll" href="index.html#section_5">Contact</a>
+                        </li>
+
+                        <li class="nav-item dropdown align-self-baseline">
+                            <a class="nav-link dropdown-toggle click-scroll" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Materi</a>
+
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                <li><a class="dropdown-item" href="1. energi.html">Energi</a></li>
+                                <li><a class="dropdown-item" href="2. Sistem dan Lingkungan.html">Sistem dan Lingkungan</a></li>
+                                <li><a class="dropdown-item" href="3. Endo dan Ekso.html">Endoterm dan ekksoterm</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="d-none d-lg-block">
+                        <a href="#top"> </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+
+        <header class="site-header d-flex flex-column justify-content-center align-items-center">
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+
+                    <div class="col-lg-5 col-12 mb-5">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Homepage</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Energi</li>
+                            </ol>
+                        </nav>
+
+                        <h2 class="text-white">Energi <br> di Kimia</h2>
+
+                        <div class="d-flex align-items-center mt-5">
+                            <a href="#topics-detail" class="btn custom-btn custom-border-btn smoothscroll me-4">Lanjut Baca</a>
+                            <a href="#top" class="custom-icon bi-bookmark smoothscroll"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-12">
+                        <div class="topics-detail-block bg-white shadow-lg">
+                            <img src="images/energi/Gambar.1 Contoh Energi.jpg" class="topics-detail-block-image img-fluid">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
+        <section class="topics-detail-section section-padding" id="topics-detail">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-8 col-12 m-auto">
+                        
+                        <h3 class="mb-4">Energi dalam Materi (Energi Kimia)</h3>
+
+                        <p>Sebuah ikatan kimia (misalnya, ikatan antara C dan H dalam metana, CH<sub>4</sub>) terbentuk dari gaya tarik antara inti atom yang bermuatan positif dan elektron yang bermuatan negatif. Kamu bisa membayangkan ikatan ini seperti pegas yang "ditekan". Dibutuhkan energi untuk memutuskannya (meregangkan pegas), dan energi dilepaskan saat ia terbentuk. Jumlah energi yang tersimpan di dalam "pegas" ini unik untuk setiap jenis ikatan (misalnya, ikatan C-H berbeda dari O=O).</p>
+
+                        <div class="row my-4">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <img src="images/Energi/Gambar.5 Pembakaran metana.PNG" class="topics-detail-block-image img-fluid">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 mt-4 mt-lg-0 mt-md-0">
+                                <img src="images/Energi/Gambar.6 Pembakaran metana.PNG" class="topics-detail-block-image img-fluid">
+                            </div>
+                        </div>
+                        
+                        <p>Setiap zat atau materi di sekitar kita mulai dari air (H<sub>2</sub>O) hingga gula (C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>) pada dasarnya menyimpan energi di dalamnya. Energi ini disebut energi kimia. <strong>Energi kimia ini "tersimpan" dalam unit struktural zat tersebut, yaitu pada ikatan yang menyatukan atom-atom dan bagaimana atom-atom itu tersusun</strong>. Ketika zat tersebut bereaksi, misalnya saat kita membakar kayu atau tubuh kita mencerna makanan, energi kimia yang tersimpan itu dapat dilepaskan (seringkali sebagai panas), disimpan lebih banyak, atau diubah menjadi bentuk energi lain. </p>
+
+                        <blockquote>
+                            Energi Kinetik dan Energi Potensial
+                        </blockquote>
+
+                        <div class="row my-4 align-items-center">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <p> Bahan bakar memiliki energi tersimpan yang lebih tinggi daripada gas buang. Ketika mobil membakar bahan bakar, sebagian energi yang tersimpan itu diubah menjadi energi kinetik (energi gerak) yang membuat mobil berjalan. </p>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <img src="images/Energi/Gambar.3 Kinetik mobil.png" class="topics-detail-block-image img-fluid">
+                            </div>
+                        </div>
+
+                        <p>Energi Kinetik: Ini adalah energi gerak. Dalam dunia kimia, atom dan molekul tidak pernah diam. Mereka terus bergerak, bergetar, dan berputar. Energi dari gerakan inilah yang disebut energi kinetik. Semakin tinggi suhu suatu zat, semakin cepat partikelnya bergerak, yang berarti energi kinetiknya semakin besar.</p>
+                        
+                        <p>Energi Potensial: Ini adalah energi yang "tersimpan" karena posisi atau komposisi suatu benda. Dalam kimia, energi potensial ini sangat terkait dengan gaya elektrostatik yaitu gaya tarik-menarik antara inti atom (yang bermuatan positif) dan elektron (yang bermuatan negatif), serta gaya tolak-menolak antar sesama inti atau sesama elektron. Energi kimia yang tersimpan dalam ikatan kimia pada dasarnya adalah sebuah bentuk energi potensial.</p>
+                        
+                        <blockquote>
+                            Hukum Termodinamika Pertama
+                        </blockquote>
+				
+			<div style="display: flex; justify-content: center;">
+  <iframe src="https://phet.colorado.edu/sims/html/energy-forms-and-changes/latest/energy-forms-and-changes_en.html"
+          width="600"
+          height="400"
+          allowfullscreen>
+  </iframe>
+</div>
+                        
+
+                        <p>Ini adalah prinsip dasar yang dikenal juga sebagai Hukum Kekekalan Energi. Hukum ini menyatakan bahwa energi tidak bisa diciptakan atau dimusnahkan. Energi hanya bisa diubah (dikonversi) dari satu bentuk ke bentuk lainnya.</p>
+
+                        <p>Sebagai contoh, saat bensin (yang menyimpan energi kimia/potensial) dibakar di mesin mobil, energi kimianya diubah menjadi energi panas (energi kinetik molekul gas hasil pembakaran) dan energi mekanik (energi kinetik yang menggerakkan mobil). Tidak ada energi yang "hilang" dalam proses itu; jumlah totalnya tetap sama, ia hanya berubah bentuk.</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="site-footer section-padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-12 mb-4 pb-2">
+                    <a class="navbar-brand mb-2" href="index.html">
+                        <i class="bi-back"></i>
+                        <span>Topik</span>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-6">
+                    <h6 class="site-footer-title mb-3">Resources</h6>
+                    <ul class="site-footer-links">
+                        <li class="site-footer-link-item">
+                            <a href="index.html" class="site-footer-link">Home</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="index.html#section_3" class="site-footer-link">How it works</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="index.html#section_4" class="site-footer-link">FAQs</a>
+                        </li>
+                        <li class="site-footer-link-item">
+                            <a href="index.html#section_5" class="site-footer-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                    <h6 class="site-footer-title mb-3">Information</h6>
+                    <p class="text-white d-flex mb-1">
+                        <a href="tel: +62-8190-32896" class="site-footer-link">
+                            +62-8190-32896
+                        </a>
+                    </p>
+                    <p class="text-white d-flex">
+                        <a href="mailto:muhammadanugrah@upi.edu" class="site-footer-link">
+                            muhammadanugrah@upi.edu
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+                    <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.
+                        <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a> Distribution <a href="https://themewagon.com">ThemeWagon</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <a href="#top" class="smoothscroll" id="scrollTopBtn" title="Kembali ke atas">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/custom.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            
+            // Tampilkan atau sembunyikan tombol saat user scroll
+            $(window).scroll(function(){
+                if ($(this).scrollTop() > 200) { 
+                    // Tampil jika user scroll lebih dari 200px
+                    $('#scrollTopBtn').fadeIn();
+                } else {
+                    // Sembunyi jika user di atas 200px
+                    $('#scrollTopBtn').fadeOut();
+                }
+            });
+
+            // Fungsi smooth scroll sudah di-handle oleh class 'smoothscroll'
+            // jadi kita tidak perlu menambahkan script untuk klik di sini.
+
+        });
+    </script>
+
+</body>
+</html>
